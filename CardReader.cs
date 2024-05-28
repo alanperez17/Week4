@@ -12,9 +12,9 @@
         private List<int> _winningNumbers;
         private List<int> _cardNumbers;
 
-        /// <Summary>
+        /// <summary>
         /// Uses the input line to generate a list of winning numbers and a list of card numbers.
-        /// </Summary>
+        /// </summary>
         ///     
         /// <param name="line">
         /// String. Includes winning numbers and card numbers separated by a '|' character.
