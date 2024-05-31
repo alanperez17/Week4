@@ -54,7 +54,7 @@ They perform the following:
 - `_cardNumbersLine`:  String. Includes the numbers after the vertical bar.
 - `_winningNumbers` and `_cardNumbers`: Integers. The store number methods write the parsed integers to these fields. The main function then accesses the values through properties.
 
-### CardReader Object Methods {#puzzle1-cardReader-methods}
+### CardReader Object Methods
 
 The `CardReader` object includes a few methods that store the winning and card numbers as integers in the object instance.
 The StoreNumbers method parses any numbers in the String input to it. It reads numbers from the line in a `foreach` loop that iterates through each character in the line.
@@ -98,7 +98,7 @@ public void StoreCardNumbers()
 }
 ```	
 
-### CardReader Object Properties {#puzzle1-cardReader-properties}
+### CardReader Object Properties
 
 The `CardReader`object includes properties that allow other functions to get the card and winning numbers. The solver function uses these to compare the numbers for the number of matches.
 The properties are defined as follows:
@@ -109,7 +109,7 @@ public List<int> WinningNumbers { get => _winningNumbers; }
 public List<int> CardNumbers { get => _cardNumbers; }
 ```
 
-## Calculating the Number of Matches {#puzzle1-matches}
+## Calculating the Number of Matches
 
 With the contents of a line converted to integer values, the solution can compare the winning numbers to the numbers on the card. It then determines the number of matches in a line.
 To do so, the program uses a `foreach` loop that runs through each winning number in the current line. If the `.CardNumber` property includes the same value, the function increments a match number variable and continues to the next winning number.
@@ -126,7 +126,7 @@ foreach (var number in myNumbers.WinningNumbers)
 }
 ```
 
-## Calculating the Total Score {#puzzle1-scoring}
+## Calculating the Total Score
 
 Finally, the function now calculates the number of matches in the line and adds the appropriate value to an integer that tracks the total score.
 This integer is declared at the start of the function, before the first `foreach` loop.

@@ -39,7 +39,7 @@
         "dest": "../docs",
         "globalMetadataFiles": [],
         "fileMetadataFiles": [],
-        "template": [ "default" ],
+        "template": [ "default", "modern" ],
         "postProcessors": [],
         "markdownEngineName": "markdig",
         "noLangKeyword": false,

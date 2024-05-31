@@ -4,7 +4,9 @@
 - name: Programming Guide
   href: ProgrammingGuide/toc.yml
   topichref: ProgrammingGuide/introduction.md
+  dropdown: true
 
 - name: Syntax Reference
   href: reference/toc.yml
   topichref: reference/Week4.yml
+  dropdown: true

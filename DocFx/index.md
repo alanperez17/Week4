@@ -1,4 +1,4 @@
-# Portfolio Project 1: API Reference and Programming Guide
+# Portfolio Project: API Reference and Programming Guide
 
 This website includes a demonstration of a basic API reference as well as a complementary Programming Guide for an Advent of Code challenge.
 
