@@ -1,4 +1,6 @@
 - name: Introduction
   href: introduction.md
-- name: Getting Started
-  href: getting-started.md
+- name: Puzzle 1 Solution
+  href: puzzle1-solution.md
+- name: Puzzle 2 Solution
+  href: puzzle2-solution.md

@@ -93,27 +93,27 @@
         /// <returns>
         /// This method returns a List<int> that includes all parsed numbers in the specified string.
         /// </returns>
-        private static List<int> StoreNumbers(string numbersLine)
-        {
-            var storedNumbers = new List<int> { };
-            for (int i = 0; i < numbersLine.Length; i++)
+            private static List<int> StoreNumbers(string numbersLine)
             {
-                char character = numbersLine[i];
-                string currentNumber = "";
-                while (character >= '0' && character <= '9')
+                var storedNumbers = new List<int> { };
+                for (int i = 0; i < numbersLine.Length; i++)
                 {
-                    currentNumber += character;
+                    char character = numbersLine[i];
+                    string currentNumber = "";
+                    while (character >= '0' && character <= '9')
+                    {
+                        currentNumber += character;
+                        i++;
+                        if (i >= numbersLine.Length) { break; }
+                        character = numbersLine[i];
+                    }
+                    if (int.TryParse(currentNumber, out int myNumber))
+                    {
+                        storedNumbers.Add(myNumber);
+                    }
                     i++;
-                    if (i >= numbersLine.Length) { break; }
-                    character = numbersLine[i];
                 }
-                if (int.TryParse(currentNumber, out int myNumber))
-                {
-                    storedNumbers.Add(myNumber);
-                }
-                i++;
+                return storedNumbers;
             }
-            return storedNumbers;
-        }
     }
 }

@@ -1,12 +1,14 @@
-# Advent of Code 2023: Week 4 Documentation
+# Advent of Code 2023: Week 4 Documentation {{#introduction}
 
 This user guide describes my solution to the Week 4 puzzles of Advent of Code 2023. I programmed this solution in C# and used a Console App project template.
 To read the original puzzle description, click [here](https://adventofcode.com/2023/day/4).
 
+You can find the complete puzzle solution code in the following GitHub repository: <https://github.com/alanperez17/Week4>.
+
 This challenge involves deciphering a scratch card that includes winning numbers and the actual numbers on the card. If a number on the card matches a winning number, the card earns points.
 The number of points a card earns depends on the number of matching numbers.
 
-The input to this challenge is formatted as shown below:
+The input to this challenge is formatted as follows:
 
 	Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
 	Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
@@ -19,7 +21,7 @@ Each card is numbered and includes its winning numbers after a colon and before 
 
 Like all advent of code puzzles, this challenge includes two distinct puzzles. Both puzzles are described below.
 
-## First Puzzle
+## First Puzzle {#intro-firstPuzzle}
 
 This puzzle requires you to get the total number of points earned by the lines in the input, where the number of matches determines the amount of points earned by a line.
 A line one point for the first match and is then multiplied by two for each subsequent match. For example, a line with 3 matches is scored as 1 * 2 * 2, which amounts to 4.
@@ -34,7 +36,7 @@ The list below shows the score for each number of matches in a line:
 
 After processing each line, the program should return the total number of points scored.
 
-## Second Puzzle
+## Second Puzzle {#intro-secondPuzzle}
 
 This puzzle requires you to get the total number of cards. The file input includes about 160 cards, but, in this puzzle, a match in a line adds a card of the following line to the number of cards.
 For example, if Card 1 has one match, then you would get another copy of card 2. Then when processing card 2, you need to process both copies and add them.
@@ -47,4 +49,5 @@ For example, if card 1 has four matches, you would receive copies of the followi
 - Card 4
 - Card 5
 
-Ultimately, this amounts to a large number as the amount of cards increases exponentially. After processing each card and all copies, the program should return the total number of cards.
+Ultimately, this amounts to a large number as the amount of cards increases exponentially.
+After processing each card and all copies, the program should return the total number of cards.
