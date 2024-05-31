@@ -1,0 +1,130 @@
+{
+  "source_base_path": "C:/Users/alanp/Desktop/AoC/2023/Week4/DocFx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ProgrammingGuide/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "ProgrammingGuide/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ProgrammingGuide/puzzle1-solution.md",
+      "output": {
+        ".html": {
+          "relative_path": "ProgrammingGuide/puzzle1-solution.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "ProgrammingGuide/puzzle2-solution.md",
+      "output": {
+        ".html": {
+          "relative_path": "ProgrammingGuide/puzzle2-solution.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "ProgrammingGuide/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "ProgrammingGuide/toc.html"
+        },
+        ".json": {
+          "relative_path": "ProgrammingGuide/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/Week4.CardNumberProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/Week4.CardNumberProcessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/Week4.CardReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/Week4.CardReader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/Week4.PuzzleSolver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/Week4.PuzzleSolver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "reference/Week4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/Week4.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "reference/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "reference/toc.html"
+        },
+        ".json": {
+          "relative_path": "reference/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

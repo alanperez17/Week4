@@ -1,9 +1,9 @@
-# Puzzle 1 Solution for AoC 2023 Week 4 {#puzzle1-header}
+# Puzzle 1 Solution for AoC 2023 Week 4
 
 This section describes the C# code solution that solves the first puzzle in week 4 of Advent of Code 2023.
 It includes brief descriptions of the functions and their intended purpose.
 
-## Reading the Input File {#puzzle1-input}
+## Reading the Input File
 
 Before the solution can start solving the puzzle, it reads the input and writes each line in the file to a String Array. This solution assumes the input file is named `PuzzleInput.txt` and is included in the program folder.
 This solution writes the input file contents to the variable `myInput`.
@@ -12,7 +12,7 @@ This solution writes the input file contents to the variable `myInput`.
 var myInput = File.ReadAllLines(@"..\..\..\PuzzleInput.txt");
 ```
 
-## Storing the Numbers {#puzzle1-storing}
+## Storing the Numbers
 
 The solution now begins to process each line from the input file. By creating a `foreach` loop, it processes each line individually.
 
@@ -28,7 +28,7 @@ The `CardReader` object removes unnecessary text from the input String and parse
 
 The lineMatches variable tracks the number of card and winning number matches in a line. The line scoring mechanism uses this later in the function.
 
-### CardReader Object Fields {#puzzle1-cardReader-fields}
+### CardReader Object Fields
 
 The `CardReader` object includes multiple fields that process the string to remove unnecessary components and write the winning and card numbers correctly. Note that object expects a line that follows the format below:
 

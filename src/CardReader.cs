@@ -28,7 +28,7 @@
             _cardNumbers = [];
         }
         /// <summary>
-        /// This property gets the winning numbers from the line in an integer list. Read-only List<int>.
+        /// This property gets the winning numbers from the line in an integer list.
         /// </summary>
         ///
         /// <remarks>
@@ -36,12 +36,12 @@
         /// </remarks>
         /// 
         /// <returns>
-        /// A List<int> that includes the winning numbers from the line.
+        /// An integer list that includes the winning numbers from the line.
         /// </returns>
         public List<int> WinningNumbers { get => _winningNumbers; }
 
         /// <summary>
-        /// This property gets all the card numbers from the line in an integer list. Read-only List<int>.
+        /// This property gets all the card numbers from the line in an integer list.
         /// </summary>
         /// 
         /// <remarks>
@@ -49,7 +49,7 @@
         /// </remarks>
         /// 
         /// <returns>
-        /// A List<int> that includes all the card numbers from the line.
+        /// An integer list that includes all the card numbers from the line.
         /// </returns>
         public List<int> CardNumbers { get => _cardNumbers; }
 
@@ -91,9 +91,9 @@
         /// </remarks>
         /// 
         /// <returns>
-        /// This method returns a List<int> that includes all parsed numbers in the specified string.
+        /// This method returns an integer list that includes all parsed numbers in the specified string.
         /// </returns>
-            private static List<int> StoreNumbers(string numbersLine)
+            public static List<int> StoreNumbers(string numbersLine)
             {
                 var storedNumbers = new List<int> { };
                 for (int i = 0; i < numbersLine.Length; i++)

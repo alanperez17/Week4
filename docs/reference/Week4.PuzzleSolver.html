@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class PuzzleSolver </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class PuzzleSolver ">
+    
+    <meta name="description" content="This object contains methods that solve puzzle 1 and puzzle 2 for the 2023 week four Advent of Code challenge.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Week4.PuzzleSolver">
+
+
+
+  <h1 id="Week4_PuzzleSolver" data-uid="Week4.PuzzleSolver" class="text-break">Class PuzzleSolver</h1>
+  <div class="markdown level0 summary"><p>This object contains methods that solve puzzle 1 and puzzle 2 for the 2023 week four Advent of Code challenge.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">PuzzleSolver</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Week4.html">Week4</a></h6>
+  <h6><strong>Assembly</strong>: AoC2023_Week4.dll</h6>
+  <h5 id="Week4_PuzzleSolver_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PuzzleSolver</code></pre>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alanperez17/Week4/new/XMLCommentedFiles/apiSpec/new?filename=Week4_PuzzleSolver_SolvePuzzle1_System_String___.md&amp;value=---%0Auid%3A%20Week4.PuzzleSolver.SolvePuzzle1(System.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alanperez17/Week4/blob/XMLCommentedFiles/src/PuzzleSolver.cs/#L29">View Source</a>
+  </span>
+  <a id="Week4_PuzzleSolver_SolvePuzzle1_" data-uid="Week4.PuzzleSolver.SolvePuzzle1*"></a>
+  <h4 id="Week4_PuzzleSolver_SolvePuzzle1_System_String___" data-uid="Week4.PuzzleSolver.SolvePuzzle1(System.String[])">SolvePuzzle1(string[])</h4>
+  <div class="markdown level1 summary"><p>This method returns the result for the first puzzle of week four to the console window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SolvePuzzle1(string[] input)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">input</span></td>
+        <td><p>String Array. Includes a number of winning numbers and card numbers separated by a '|' character in each element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Week4_PuzzleSolver_SolvePuzzle1_System_String____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method processes the number of matches in each line in the input Array. A match occurs when a winning number in the line is equal to a card number in the same line.
+It tracks the total number of points scored, where:</p>
+<ul><li>A line with one matching number adds one to the total.</li><li>A line with two matching numbers adds two to the total.</li><li>A line with three matching numbers adds four to the total.</li><li>And continuing to the next power of two for each additional matching number.</li></ul>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alanperez17/Week4/new/XMLCommentedFiles/apiSpec/new?filename=Week4_PuzzleSolver_SolvePuzzle2_System_String___.md&amp;value=---%0Auid%3A%20Week4.PuzzleSolver.SolvePuzzle2(System.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alanperez17/Week4/blob/XMLCommentedFiles/src/PuzzleSolver.cs/#L72">View Source</a>
+  </span>
+  <a id="Week4_PuzzleSolver_SolvePuzzle2_" data-uid="Week4.PuzzleSolver.SolvePuzzle2*"></a>
+  <h4 id="Week4_PuzzleSolver_SolvePuzzle2_System_String___" data-uid="Week4.PuzzleSolver.SolvePuzzle2(System.String[])">SolvePuzzle2(string[])</h4>
+  <div class="markdown level1 summary"><p>This method returns the result for the second puzzle of week four to the console window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SolvePuzzle2(string[] input)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">input</span></td>
+        <td><p>String Array. Includes a number of winning numbers and card numbers separated by a '|' character in each element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Week4_PuzzleSolver_SolvePuzzle2_System_String____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method processes the number of matches in each line in the input Array. A match occurs when a winning number in the line is equal to a card number in the same line.
+For each match in a line, the following line is incremented by 1. If a line includes two matches, the following two lines are incremented by one. This continues on for the number of matches in the line.
+The cards added to a line are also counted and processed. These additional cards also add cards to the following lines.</p>
+<p>After processing all the cards, this method writes the total number of cards to the console window.</p>
+</div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alanperez17/Week4/new/XMLCommentedFiles/apiSpec/new?filename=Week4_PuzzleSolver.md&amp;value=---%0Auid%3A%20Week4.PuzzleSolver%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/alanperez17/Week4/blob/XMLCommentedFiles/src/PuzzleSolver.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

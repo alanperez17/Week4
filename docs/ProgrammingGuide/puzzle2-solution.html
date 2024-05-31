@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Puzzle 2 Solution for AoC 2023 Week 4 </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Puzzle 2 Solution for AoC 2023 Week 4 ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="puzzle-2-solution-for-aoc-2023-week-4">Puzzle 2 Solution for AoC 2023 Week 4</h1>
+
+<p>This section describes the C# code solution that solves the second puzzle in week 4 of Advent of Code 2023.
+It includes brief descriptions of the functions and their intended purpose.</p>
+<h2 id="reading-the-input-file">Reading the Input File</h2>
+<p>Before the solution can start solving the puzzle, it reads the input and writes each line in the file to a String Array. This solution assumes the input file is named <code>PuzzleInput.txt</code> and is included in the program folder.
+This solution writes the input file contents to the variable <code>myInput</code>.</p>
+<pre><code>var myInput = File.ReadAllLines(@&quot;..\..\..\PuzzleInput.txt&quot;);
+</code></pre>
+<h2 id="counting-the-initial-cards">Counting the Initial Cards</h2>
+<p>This puzzle requires adding cards to the existing input and then continuously processing both the initial and added cards. As a first step, the function creates a new integer list that accounts for all of the initial cards.
+It does this by adding a new element to this list with a value of one for each line in the input file.</p>
+<p>The main function includes the following lines of code to do this:</p>
+<pre><code>var myCards = new List&lt;int&gt; { };
+CardNumberProcessor.FillListWithCards(input, myCards);
+</code></pre>
+<p>The <code>FillListWithCards</code> method adds the elements to the new list. It does this using a <code>foreach</code> loop that iterates through each line in the input.</p>
+<pre><code>public static void FillListWithCards(string[] input, List&lt;int&gt; myCardList)
+{
+    foreach (var line in input)
+    {
+		myCardList.Add(1);
+    }
+}
+</code></pre>
+<h2 id="processing-cards">Processing Cards</h2>
+<p>With the initial cards set in the integer list <code>myCards</code>, the solution can now:</p>
+<ol>
+<li>Step through each element in <code>myCards</code>.</li>
+<li>Calculate the number of matches in the current card.
+<ul>
+<li>This is done using the CardNumberProcessor.GetNumberOfMatches method. This method uses the <code>CardReader</code> object and the original input Strings to get the number of matches. For more information, see <a href="puzzle1-solution.html#storing-the-numbers">Storing the Numbers</a> in the first puzzle solution.</li>
+</ul>
+</li>
+<li>Add cards to the following indices in the list.</li>
+<li>Add the current card to the variable that tracks the total number of cards.
+<ul>
+<li>To support this, the <code>PuzzleSolver2</code> method declares an integer <code>total</code> at the start.</li>
+</ul>
+</li>
+<li>Decrement the current list element.
+<ul>
+<li>This removes the current card so it not counted again.</li>
+</ul>
+</li>
+<li>Continue on to the next index when the current one equals zero.
+<ul>
+<li>When the current index equals zero, all cards of that number have been processed.</li>
+</ul>
+</li>
+</ol>
+<p>To accomplish this, the solution uses nested <code>for</code> loops, as shown in the follow codeblock. The outer <code>for</code> loop tracks the current index in the list (integer <code>i</code>) while the inner loop tracks the number of cards to process in the index (integer <code>j</code>).</p>
+<pre><code>for (int i = 0; i &lt; myCards.Count; i++)
+{
+    int numberOfMatches = CardNumberProcessor.GetNumberOfMatches(input[i]);
+    for (int j = myCards[i]; j &gt; 0; j--)
+    {
+        CardNumberProcessor.AddCards(numberOfMatches, i, myCards);
+        total++;
+    }
+}
+</code></pre>
+<h3 id="adding-cards">Adding Cards</h3>
+<p>The <code>CardNumberProcessor</code> object includes the method AddCards, which adds cards of the following types based on the number of matches in the current card.</p>
+<p>This method takes the following as parameters:</p>
+<ul>
+<li>The current number of matches as from <code>.GetNumberOfMatches</code>. This determines the number of cards to add.</li>
+<li>The current line index in <code>myCards</code>. In the solver function, this is <code>i</code>.</li>
+<li>The card list <code>myCards</code>.</li>
+</ul>
+<p>In a while loop, this method performs the following:</p>
+<ol>
+<li>Ensures that the number of cards to add is greater than 0.</li>
+<li>In an if loop, checks that the end of the card list index has not been reached.</li>
+<li>Increments the number of cards in the next index.</li>
+<li>Increments the current index.</li>
+<li>Decrements the number of cards to add.</li>
+</ol>
+<p>This process adds one card to the following indices for each match in the current line.
+For example, if card 1 has four matches, then it increments the number of cards 2, 3, 4, and 5 by one.</p>
+<p>The following codeblock shows the <code>.AddCards</code> method.</p>
+<pre><code>public static void AddCards(int cardsToAdd, int lineIndex, List&lt;int&gt; cardList)
+{
+    while (cardsToAdd &gt; 0)
+    {
+        if (lineIndex + 1 &lt; cardList.Count)
+        {
+            cardList[lineIndex + 1]++;
+            lineIndex++;
+            cardsToAdd--;
+        }
+    }
+}
+</code></pre>
+<h2 id="calculating-the-total-score">Calculating the Total Score</h2>
+<p>As shown above, the function increments the integer <code>total</code> each time it processes a card.
+Once it finishes both <code>for</code> loops and processes every card, the function prints the total to the console window using the code below, solving the puzzle.</p>
+<pre><code>Console.WriteLine($&quot;The second puzzle total is: {total}&quot;);
+</code></pre>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alanperez17/Week4/blob/XMLCommentedFiles/DocFx/ProgrammingGuide/puzzle2-solution.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

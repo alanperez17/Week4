@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Puzzle 1 Solution for AoC 2023 Week 4 </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Puzzle 1 Solution for AoC 2023 Week 4 ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="puzzle-1-solution-for-aoc-2023-week-4">Puzzle 1 Solution for AoC 2023 Week 4</h1>
+
+<p>This section describes the C# code solution that solves the first puzzle in week 4 of Advent of Code 2023.
+It includes brief descriptions of the functions and their intended purpose.</p>
+<h2 id="reading-the-input-file">Reading the Input File</h2>
+<p>Before the solution can start solving the puzzle, it reads the input and writes each line in the file to a String Array. This solution assumes the input file is named <code>PuzzleInput.txt</code> and is included in the program folder.
+This solution writes the input file contents to the variable <code>myInput</code>.</p>
+<pre><code>var myInput = File.ReadAllLines(@&quot;..\..\..\PuzzleInput.txt&quot;);
+</code></pre>
+<h2 id="storing-the-numbers">Storing the Numbers</h2>
+<p>The solution now begins to process each line from the input file. By creating a <code>foreach</code> loop, it processes each line individually.</p>
+<pre><code>foreach (var line in input)
+{
+    int lineMatches = 0;
+    var myNumbers = new CardReader(line);
+    myNumbers.StoreWinningNumbers();
+    myNumbers.StoreCardNumbers();	
+</code></pre>
+<p>In this codeblock, the solution instantiates the <code>CardReader</code> object as myNumbers. This instance takes the current line as a parameter.
+The <code>CardReader</code> object removes unnecessary text from the input String and parses the number values as integers. The store number methods then write the appropriate integers to the winning number or card number properties in the current <code>CardReader</code> instance.</p>
+<p>The lineMatches variable tracks the number of card and winning number matches in a line. The line scoring mechanism uses this later in the function.</p>
+<h3 id="cardreader-object-fields">CardReader Object Fields</h3>
+<p>The <code>CardReader</code> object includes multiple fields that process the string to remove unnecessary components and write the winning and card numbers correctly. Note that object expects a line that follows the format below:</p>
+<pre><code>Card [Number]: [Winning numbers each separated by a space] | [Card numbers separated by a space]
+</code></pre>
+<p>As a result, the following fields handle the String:</p>
+<pre><code>public CardReader(string line)
+{
+	_cleanedLine = line.Remove(0, line.IndexOf(':') + 2);
+	_winningNumbersLine = _cleanedLine.Remove(_cleanedLine.IndexOf('|'));
+	_cardNumbersLine = _cleanedLine.Remove(0, _cleanedLine.IndexOf('|'));
+	_winningNumbers = [];
+	_cardNumbers = [];
+}
+</code></pre>
+<p>They perform the following:</p>
+<ul>
+<li><code>_cleanedLine</code>: String. Removes the card number and colon from the beginning of the line.</li>
+<li><code>_winningNumbersLine</code>: String. Includes the numbers before the vertical bar. This does not include the card number before the colon.</li>
+<li><code>_cardNumbersLine</code>:  String. Includes the numbers after the vertical bar.</li>
+<li><code>_winningNumbers</code> and <code>_cardNumbers</code>: Integers. The store number methods write the parsed integers to these fields. The main function then accesses the values through properties.</li>
+</ul>
+<h3 id="cardreader-object-methods-puzzle1-cardreader-methods">CardReader Object Methods {#puzzle1-cardReader-methods}</h3>
+<p>The <code>CardReader</code> object includes a few methods that store the winning and card numbers as integers in the object instance.
+The StoreNumbers method parses any numbers in the String input to it. It reads numbers from the line in a <code>foreach</code> loop that iterates through each character in the line.
+It uses the <code>int.TryParse</code> command to check if the current character is a digit. If it is, the function continues to add digits to the number until it reaches a space or a character that fails the <code>TryParse</code> check.</p>
+<pre><code>private static List&lt;int&gt; StoreNumbers(string numbersLine)
+{
+    var storedNumbers = new List&lt;int&gt; { };
+    for (int i = 0; i &lt; numbersLine.Length; i++)
+    {
+        char character = numbersLine[i];
+        string currentNumber = &quot;&quot;;
+        while (character &gt;= '0' &amp;&amp; character &lt;= '9')
+        {
+            currentNumber += character;
+            i++;
+            if (i &gt;= numbersLine.Length) { break; }
+            character = numbersLine[i];
+        }
+        if (int.TryParse(currentNumber, out int myNumber))
+        {
+            storedNumbers.Add(myNumber);
+        }
+        i++;
+    }
+    return storedNumbers;
+}
+</code></pre>
+<p>To store the winning numbers and card numbers, the <code>CardReader</code> object includes methods that write these values to integer list fields.
+Both of these methods use the above function, but write the values to the winning numbers or card numbers fields, respectively.</p>
+<pre><code>public void StoreWinningNumbers()
+{
+    _winningNumbers = StoreNumbers(_winningNumbersLine);
+
+public void StoreCardNumbers()
+{
+    _cardNumbers = StoreNumbers(_cardNumbersLine);
+}
+</code></pre>
+<h3 id="cardreader-object-properties-puzzle1-cardreader-properties">CardReader Object Properties {#puzzle1-cardReader-properties}</h3>
+<p>The <code>CardReader</code>object includes properties that allow other functions to get the card and winning numbers. The solver function uses these to compare the numbers for the number of matches.
+The properties are defined as follows:</p>
+<pre><code>public List&lt;int&gt; WinningNumbers { get =&gt; _winningNumbers; }
+
+public List&lt;int&gt; CardNumbers { get =&gt; _cardNumbers; }
+</code></pre>
+<h2 id="calculating-the-number-of-matches-puzzle1-matches">Calculating the Number of Matches {#puzzle1-matches}</h2>
+<p>With the contents of a line converted to integer values, the solution can compare the winning numbers to the numbers on the card. It then determines the number of matches in a line.
+To do so, the program uses a <code>foreach</code> loop that runs through each winning number in the current line. If the <code>.CardNumber</code> property includes the same value, the function increments a match number variable and continues to the next winning number.</p>
+<p>The following code is nested within the <code>foreach</code> loop that iterates through each line.</p>
+<pre><code>foreach (var number in myNumbers.WinningNumbers)
+{
+    if (myNumbers.CardNumbers.Contains(number))
+    {
+        lineMatches++;
+    }
+}
+</code></pre>
+<h2 id="calculating-the-total-score-puzzle1-scoring">Calculating the Total Score {#puzzle1-scoring}</h2>
+<p>Finally, the function now calculates the number of matches in the line and adds the appropriate value to an integer that tracks the total score.
+This integer is declared at the start of the function, before the first <code>foreach</code> loop.
+The <code>foreach</code> loop then continues on to the next line.</p>
+<pre><code>if (lineMatches == 0) { continue; }
+else if (lineMatches == 1) { total += 1; }
+else { total += (int)Math.Pow(2, lineMatches - 1); }
+</code></pre>
+<p>After processing all the lines, the function then writes the total to the console window, solving the puzzle:</p>
+<pre><code>Console.WriteLine($&quot;The first puzzle total is: {total}&quot;);
+</code></pre>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alanperez17/Week4/blob/XMLCommentedFiles/DocFx/ProgrammingGuide/puzzle1-solution.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

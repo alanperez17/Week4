@@ -1,4 +1,4 @@
-# Advent of Code 2023: Week 4 Documentation {{#introduction}
+# Advent of Code 2023: Week 4 Documentation
 
 This user guide describes my solution to the Week 4 puzzles of Advent of Code 2023. I programmed this solution in C# and used a Console App project template.
 To read the original puzzle description, click [here](https://adventofcode.com/2023/day/4).
@@ -21,7 +21,7 @@ Each card is numbered and includes its winning numbers after a colon and before 
 
 Like all advent of code puzzles, this challenge includes two distinct puzzles. Both puzzles are described below.
 
-## First Puzzle {#intro-firstPuzzle}
+## First Puzzle
 
 This puzzle requires you to get the total number of points earned by the lines in the input, where the number of matches determines the amount of points earned by a line.
 A line one point for the first match and is then multiplied by two for each subsequent match. For example, a line with 3 matches is scored as 1 * 2 * 2, which amounts to 4.
@@ -36,7 +36,7 @@ The list below shows the score for each number of matches in a line:
 
 After processing each line, the program should return the total number of points scored.
 
-## Second Puzzle {#intro-secondPuzzle}
+## Second Puzzle
 
 This puzzle requires you to get the total number of cards. The file input includes about 160 cards, but, in this puzzle, a match in a line adds a card of the following line to the number of cards.
 For example, if Card 1 has one match, then you would get another copy of card 2. Then when processing card 2, you need to process both copies and add them.

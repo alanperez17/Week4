@@ -11,11 +11,11 @@
         /// </summary>
         /// 
         /// <param name="input">
-        /// String Array. Includes a number of winning numbers and card numbers separated by a '|' character in each element.
+        /// Includes a number of winning numbers and card numbers separated by a '|' character in each element.
         /// </param>
         /// 
         /// <param name="myCardList">
-        /// Integer List. This method adds an element with a value of one for each card in the input Array to this list.
+        /// This method adds an element with a value of one for each card in the input Array to this list.
         /// </param>
         /// 
         /// <remarks>
@@ -39,7 +39,7 @@
         /// </summary>
         /// 
         /// <param name="line">
-        /// String. Includes the winning numbers and card numbers separated by a '|' character.
+        /// Includes the winning numbers and card numbers separated by a '|' character.
         /// </param>
         /// 
         /// <remarks>
@@ -69,11 +69,11 @@
         /// This method adds cards to the following indices in the card list based on the number of matches in a line.
         /// </summary>
         /// <param name="cardsToAdd">
-        /// Integer. Determines the number of cards to add to the following lines. Set this to the number of matches in a line returned by .GetNumberOfMatches.
+        /// Determines the number of cards to add to the following lines. Set this to the number of matches in a line returned by .GetNumberOfMatches.
         /// </param>
         /// 
         /// <param name="lineIndex">
-        /// Integer. Sets the current line index. This is used to ensure that no cards are added beyond the end of the List.
+        /// Sets the current line index. This ensures that no cards are added beyond the end of the List.
         /// </param>
         /// <param name="cardList">
         /// Integer List. Sets the card list that this method adds cards to.

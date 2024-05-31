@@ -16,7 +16,7 @@
         /// <remarks>
         /// This method processes the number of matches in each line in the input Array. A match occurs when a winning number in the line is equal to a card number in the same line.
         /// It tracks the total number of points scored, where:
-        /// <list type="bullet"
+        /// <list type="bullet">
         ///     <item><description>A line with one matching number adds one to the total.</description></item>
         ///     <item><description>A line with two matching numbers adds two to the total.</description></item>
         ///     <item><description>A line with three matching numbers adds four to the total.</description></item>

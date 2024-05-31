@@ -1,9 +1,9 @@
-# Puzzle 2 Solution for AoC 2023 Week 4 {#puzzle2-header}
+# Puzzle 2 Solution for AoC 2023 Week 4
 
 This section describes the C# code solution that solves the second puzzle in week 4 of Advent of Code 2023.
 It includes brief descriptions of the functions and their intended purpose.
 
-## Reading the Input File {#puzzle2-input}
+## Reading the Input File
 
 Before the solution can start solving the puzzle, it reads the input and writes each line in the file to a String Array. This solution assumes the input file is named `PuzzleInput.txt` and is included in the program folder.
 This solution writes the input file contents to the variable `myInput`.
@@ -12,7 +12,7 @@ This solution writes the input file contents to the variable `myInput`.
 var myInput = File.ReadAllLines(@"..\..\..\PuzzleInput.txt");
 ```
 	
-## Counting the Initial Cards {#puzzle2-initialCards}
+## Counting the Initial Cards
 
 This puzzle requires adding cards to the existing input and then continuously processing both the initial and added cards. As a first step, the function creates a new integer list that accounts for all of the initial cards.
 It does this by adding a new element to this list with a value of one for each line in the input file.
@@ -36,13 +36,13 @@ public static void FillListWithCards(string[] input, List<int> myCardList)
 }
 ```
 
-## Processing Cards {#puzzle2-processingCards}
+## Processing Cards
 
 With the initial cards set in the integer list `myCards`, the solution can now:
 
 1. Step through each element in `myCards`.
 2. Calculate the number of matches in the current card.
-	- This is done using the CardNumberProcessor.GetNumberOfMatches method. This method uses the `CardReader` object and the original input Strings to get the number of matches. For more information, see [Storing the Numbers](./puzzle1-solution.md#puzzle1-storing) in the first puzzle solution.
+	- This is done using the CardNumberProcessor.GetNumberOfMatches method. This method uses the `CardReader` object and the original input Strings to get the number of matches. For more information, see [Storing the Numbers](puzzle1-solution.md#storing-the-numbers) in the first puzzle solution.
 3. Add cards to the following indices in the list.
 4. Add the current card to the variable that tracks the total number of cards.
 	- To support this, the `PuzzleSolver2` method declares an integer `total` at the start.
@@ -65,7 +65,7 @@ for (int i = 0; i < myCards.Count; i++)
 }
 ```
 
-### Adding Cards {#puzzle2-addingCards}
+### Adding Cards
 
 The `CardNumberProcessor` object includes the method AddCards, which adds cards of the following types based on the number of matches in the current card.
 
@@ -101,7 +101,7 @@ public static void AddCards(int cardsToAdd, int lineIndex, List<int> cardList)
 }
 ```
 
-## Calculating the Total Score {#puzzle2-scoring}
+## Calculating the Total Score
 
 As shown above, the function increments the integer `total` each time it processes a card.
 Once it finishes both `for` loops and processes every card, the function prints the total to the console window using the code below, solving the puzzle.

@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Advent of Code 2023: Week 4 Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Advent of Code 2023: Week 4 Documentation ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="advent-of-code-2023-week-4-documentation">Advent of Code 2023: Week 4 Documentation</h1>
+
+<p>This user guide describes my solution to the Week 4 puzzles of Advent of Code 2023. I programmed this solution in C# and used a Console App project template.
+To read the original puzzle description, click <a href="https://adventofcode.com/2023/day/4">here</a>.</p>
+<p>You can find the complete puzzle solution code in the following GitHub repository: <a href="https://github.com/alanperez17/Week4">https://github.com/alanperez17/Week4</a>.</p>
+<p>This challenge involves deciphering a scratch card that includes winning numbers and the actual numbers on the card. If a number on the card matches a winning number, the card earns points.
+The number of points a card earns depends on the number of matching numbers.</p>
+<p>The input to this challenge is formatted as follows:</p>
+<pre><code>Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
+Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
+Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1
+Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
+Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
+Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11
+</code></pre>
+<p>Each card is numbered and includes its winning numbers after a colon and before a vertical bar. The card numbers are shown after the vertical bar.</p>
+<p>Like all advent of code puzzles, this challenge includes two distinct puzzles. Both puzzles are described below.</p>
+<h2 id="first-puzzle">First Puzzle</h2>
+<p>This puzzle requires you to get the total number of points earned by the lines in the input, where the number of matches determines the amount of points earned by a line.
+A line one point for the first match and is then multiplied by two for each subsequent match. For example, a line with 3 matches is scored as 1 * 2 * 2, which amounts to 4.</p>
+<p>The list below shows the score for each number of matches in a line:</p>
+<ul>
+<li>0 matches: 0 points</li>
+<li>1 match: 1 point (1 * 1)</li>
+<li>2 matches: 2 points (1 * 2)</li>
+<li>3 matches: 4 points (1 * 2 * 2)</li>
+<li>4 matches: 8 points (1 * 2 * 2 * 2)</li>
+<li>And so on.</li>
+</ul>
+<p>After processing each line, the program should return the total number of points scored.</p>
+<h2 id="second-puzzle">Second Puzzle</h2>
+<p>This puzzle requires you to get the total number of cards. The file input includes about 160 cards, but, in this puzzle, a match in a line adds a card of the following line to the number of cards.
+For example, if Card 1 has one match, then you would get another copy of card 2. Then when processing card 2, you need to process both copies and add them.
+This continues on until all cards are processed and counted.</p>
+<p>The number of matches determines how many of the following lines get copies. With one match, the next line gets a copy. With two matches, the next two lines get one copy. With three matches, the next three lines get a copy, and so on.
+For example, if card 1 has four matches, you would receive copies of the following cards:</p>
+<ul>
+<li>Card 2</li>
+<li>Card 3</li>
+<li>Card 4</li>
+<li>Card 5</li>
+</ul>
+<p>Ultimately, this amounts to a large number as the amount of cards increases exponentially.
+After processing each card and all copies, the program should return the total number of cards.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alanperez17/Week4/blob/XMLCommentedFiles/DocFx/ProgrammingGuide/introduction.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
