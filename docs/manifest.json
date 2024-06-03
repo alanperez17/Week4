@@ -33,6 +33,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "ProgrammingGuide/syntax-reference_introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "ProgrammingGuide/syntax-reference_introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "ProgrammingGuide/toc.yml",
       "output": {

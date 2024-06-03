@@ -8,5 +8,5 @@
 
 - name: Syntax Reference
   href: reference/toc.yml
-  topichref: reference/Week4.yml
+  topichref: ProgrammingGuide/syntax-reference_introduction.md
   dropdown: true
